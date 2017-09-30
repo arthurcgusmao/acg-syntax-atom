@@ -55,36 +55,46 @@ atom-text-editor {
 // Syntax styles
 
 .syntax--comment {
-  color: @light-gray;
+  // color: @light-gray;
+  color: @syntax-comment-color;
   font-style: italic;
 }
 
 .syntax--keyword {
-  color: @purple;
+    // color: @purple;
+    color: @syntax-keyword-color;
+    font-weight: bold;
 
-  &.syntax--control {
-    color: @purple;
-  }
+    &.syntax--control {
+        // color: @purple;
+    }
 
-  &.syntax--operator {
-    color: @syntax-text-color;
-  }
+    &.syntax--operator:not(.syntax--logical) {
+        color: @syntax-text-color;
+        font-weight: normal;
+    }
+    // &.syntax--assignment {
+    //   color: @syntax-text-color;
+    // }
 
-  &.syntax--other.syntax--special-method {
-    color: @blue;
-  }
+    &.syntax--other.syntax--special-method {
+        color: @blue;
+    }
 
-  &.syntax--other.syntax--unit {
-    color: @orange;
-  }
+    &.syntax--other.syntax--unit {
+        color: @orange;
+    }
 }
 
 .syntax--storage {
-  color: @purple;
+    // color: @purple;
+    color: @syntax-storage-color;
+    font-weight: bold;
 }
 
 .syntax--constant {
-  color: @orange;
+    // color: @orange;
+    color: @syntax-constant-color;
 
   &.syntax--character.syntax--escape {
     color: @cyan;
@@ -104,15 +114,16 @@ atom-text-editor {
 }
 
 .syntax--variable {
-  color: @red;
+    // color: @red;
+    color: @syntax-variable-color;
 
-  &.syntax--interpolation {
-    color: darken(@red, 10%);
-  }
+    &.syntax--interpolation {
+        color: darken(@red, 10%);
+    }
 
-  &.syntax--parameter.syntax--function {
-    color: @syntax-text-color;
-  }
+    &.syntax--parameter.syntax--function {
+        color: @syntax-text-color;
+    }
 }
 
 .syntax--invalid.syntax--illegal {
@@ -121,8 +132,12 @@ atom-text-editor {
 }
 
 .syntax--string {
-  color: @green;
+    // color: @green;
+    color: @syntax-string-color;
 
+    &.syntax--block {
+        color: @syntax-doc-color;
+    }
 
   &.syntax--regexp {
     color: @cyan;
@@ -140,10 +155,11 @@ atom-text-editor {
 .syntax--punctuation {
   &.syntax--definition {
     &.syntax--comment {
-      color: @light-gray;
+    //   color: @light-gray;
+      color: @syntax-comment-color;
     }
 
-    &.syntax--string,
+    // &.syntax--string, // removed, I want the "" separators to be the same color as the strings
     &.syntax--variable,
     &.syntax--parameters,
     &.syntax--array {
@@ -188,11 +204,15 @@ atom-text-editor {
 
 .syntax--entity {
   &.syntax--name.syntax--function {
-    color: @blue;
+    // color: @blue;
+    color: @syntax-function-name-color;
+    font-weight: bold;
   }
   &.syntax--name.syntax--type {
-    color: @light-orange;
-    text-decoration: underline;
+    // color: @light-orange;
+    color: @syntax-type-name-color;
+    // text-decoration: underline;
+    font-weight: bold;
   }
 
   &.syntax--other.syntax--inherited-class {
